@@ -1,4 +1,4 @@
 packages:
-  - expo/
+  - apps/*
   - packages/*
   - tooling/*
