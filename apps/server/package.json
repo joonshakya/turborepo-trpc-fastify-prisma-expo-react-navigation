@@ -1,14 +1,15 @@
 {
-  "name": "@acme/api",
+  "name": "@acme/server",
   "version": "0.1.0",
   "private": true,
   "main": "./index.ts",
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild index.ts --bundle --packages=external --platform=node --format=esm --outdir=dist --sourcemap",
+    "build": "esbuild index.ts --bundle --packages=external --platform=node --format=cjs --outdir=dist --sourcemap",
     "dev": "tsx watch --clear-screen=false index",
-    "start": "node dist/index.js",
+    "dev:studio": "pnpm dlx prisma studio --browser none",
+    "start": "esbuild index.ts --bundle --packages=external --platform=node --format=cjs --outdir=dist --sourcemap && node dist/index.js",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
@@ -17,11 +18,11 @@
   "dependencies": {
     "@fastify/websocket": "^7.1.2",
     "fastify": "^4.13.0",
-    "@acme/db": "^0.1.0",
     "@trpc/server": "^10.41.0",
     "jsonwebtoken": "^9.0.2",
     "superjson": "1.13.1",
     "zod": "^3.22.2",
+    "@acme/db": "^0.1.0",
     "tslib": "^2.5.0"
   },
   "devDependencies": {

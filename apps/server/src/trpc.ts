@@ -11,7 +11,7 @@ import type { FastifyRequest } from "fastify/types/request";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { prisma } from "@acme/db";
+import { prisma } from "../../db";
 
 /**
  * 1. CONTEXT
@@ -40,7 +40,7 @@ import { prisma } from "@acme/db";
 export const createTRPCContext = async ({ req }: { req: FastifyRequest }) => {
   return {
     user: {},
-    prisma,
+    prisma: prisma,
   };
 };
 

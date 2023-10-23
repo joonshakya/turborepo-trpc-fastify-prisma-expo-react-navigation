@@ -36,7 +36,7 @@
     "superjson": "1.13.1"
   },
   "devDependencies": {
-    "@acme/api": "^0.1.0",
+    "@acme/server": "^0.1.0",
     "@acme/eslint-config": "^0.2.0",
     "@acme/prettier-config": "^0.1.0",
     "@acme/tailwind-config": "^0.1.0",

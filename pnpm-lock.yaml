@@ -27,6 +27,22 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
+  apps/db:
+    dependencies:
+      '@prisma/client':
+        specifier: ^5.4.2
+        version: 5.4.2(prisma@5.4.2)
+    devDependencies:
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
+      prisma:
+        specifier: ^5.4.2
+        version: 5.4.2
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
   apps/expo:
     dependencies:
       '@expo/metro-config':
@@ -87,15 +103,15 @@ importers:
         specifier: 1.13.1
         version: 1.13.1
     devDependencies:
-      '@acme/api':
-        specifier: ^0.1.0
-        version: link:../../packages/api
       '@acme/eslint-config':
         specifier: ^0.2.0
         version: link:../../tooling/eslint
       '@acme/prettier-config':
         specifier: ^0.1.0
         version: link:../../tooling/prettier
+      '@acme/server':
+        specifier: ^0.1.0
+        version: link:../server
       '@acme/tailwind-config':
         specifier: ^0.1.0
         version: link:../../tooling/tailwind
@@ -133,7 +149,7 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/api:
+  apps/server:
     dependencies:
       '@acme/db':
         specifier: ^0.1.0
@@ -177,29 +193,13 @@ importers:
         version: 0.17.19
       eslint:
         specifier: ^8.51.0
-        version: 8.51.0
+        version: 8.52.0
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
       tsx:
         specifier: ^3.12.7
         version: 3.14.0
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  packages/db:
-    dependencies:
-      '@prisma/client':
-        specifier: ^5.4.2
-        version: 5.4.2(prisma@5.4.2)
-    devDependencies:
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.3.0
-      prisma:
-        specifier: ^5.4.2
-        version: 5.4.2
       typescript:
         specifier: ^5.2.2
         version: 5.2.2

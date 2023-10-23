@@ -92,7 +92,7 @@ function CreatePost() {
 }
 
 const Index = () => {
-  const utils = api.useContext();
+  const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
 

@@ -5,13 +5,13 @@ import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import superjson from "superjson";
 
-import type { AppRouter } from "@acme/api";
+import type { AppRouter } from "@acme/server";
 
 /**
  * A set of typesafe hooks for consuming your API.
  */
 export const api = createTRPCReact<AppRouter>();
-export { type RouterInputs, type RouterOutputs } from "@acme/api";
+export { type RouterInputs, type RouterOutputs } from "@acme/server";
 
 /**
  * Extend this function when going to production by
@@ -29,6 +29,8 @@ const getBaseUrl = () => {
 
   const debuggerHost = Constants.expoConfig?.hostUri;
   const localhost = debuggerHost?.split(":")[0];
+
+  console.log("localhost", localhost);
 
   if (!localhost) {
     // return "https://turbo.t3.gg";
@@ -51,7 +53,7 @@ export function TRPCProvider(props: { children: React.ReactNode }) {
       transformer: superjson,
       links: [
         httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`,
+          url: `${getBaseUrl()}`,
           headers() {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");

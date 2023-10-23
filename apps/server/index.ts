@@ -43,8 +43,8 @@ void server.register(fastifyTRPCPlugin, {
 
 const start = async () => {
   try {
-    await server.listen({ port });
-    console.log("listening on port", port);
+    await server.listen({ port, host: "0.0.0.0" });
+    console.log(`tRPC server running at http://localhost:${port}`);
   } catch (err) {
     server.log.error(err);
     process.exit(1);
