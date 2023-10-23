@@ -1,9 +1,9 @@
 import type { ExpoConfig } from "@expo/config";
 
 const defineConfig = (): ExpoConfig => ({
-  name: "expo",
-  slug: "expo",
-  scheme: "expo",
+  name: "t3-turbo",
+  slug: "t3-turbo",
+  scheme: "t3-turbo",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -28,11 +28,11 @@ const defineConfig = (): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
-  // extra: {
-  //   eas: {
-  //     projectId: "your-eas-project-id",
-  //   },
-  // },
+  extra: {
+    eas: {
+      projectId: "686fccc6-53c9-45b9-9596-f2b60ec2bad7",
+    },
+  },
   experiments: {
     tsconfigPaths: true,
     typedRoutes: true,

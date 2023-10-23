@@ -137,7 +137,7 @@ importers:
         specifier: ^18.2.31
         version: 18.2.31
       eslint:
-        specifier: ^8.52.0
+        specifier: ^8.51.0
         version: 8.52.0
       prettier:
         specifier: ^3.0.3
