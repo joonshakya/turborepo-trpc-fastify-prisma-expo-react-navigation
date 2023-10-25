@@ -37,7 +37,17 @@ const defineConfig = (): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router", "./expo-plugins/with-modify-gradle.js"],
+  plugins: [
+    [
+      "expo-build-properties",
+      {
+        android: {
+          enableProguardInReleaseBuilds: true,
+        },
+      },
+    ],
+    "./expo-plugins/with-modify-gradle.js",
+  ],
 });
 
 export default defineConfig;

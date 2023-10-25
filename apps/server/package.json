@@ -9,8 +9,8 @@
     "build": "esbuild index.ts --bundle --packages=external --platform=node --format=cjs --outdir=dist --sourcemap",
     "dev": "tsx watch --clear-screen=false index",
     "dev:studio": "pnpm dlx prisma studio --browser none",
-    "start": "esbuild index.ts --bundle --packages=external --platform=node --format=cjs --outdir=dist --sourcemap && node dist/index.js",
-    "clean": "rm -rf .turbo node_modules",
+    "serve": "esbuild index.ts --bundle --packages=external --platform=node --format=cjs --outdir=dist --sourcemap && node dist/index.js",
+    "clean": "rm -rf .turbo node_modules dist",
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
     "typecheck": "tsc --noEmit"

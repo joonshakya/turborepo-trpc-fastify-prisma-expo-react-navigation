@@ -30,6 +30,7 @@ const config = {
       2,
       { checksVoidReturn: { attributes: false } },
     ],
+    "@typescript-eslint/consistent-type-definitions": ["error", "never"],
     "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
   },
   ignorePatterns: [

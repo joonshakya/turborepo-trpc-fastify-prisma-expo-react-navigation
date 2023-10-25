@@ -13,7 +13,7 @@
       "persistent": true,
       "cache": false
     },
-    "start": {
+    "serve": {
       "persistent": true,
       "cache": false
     },
