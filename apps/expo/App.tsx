@@ -4,7 +4,7 @@ import * as Notifications from "expo-notifications";
 import { NavigationContainer } from "@react-navigation/native";
 import { NativeWindStyleSheet } from "nativewind";
 
-import { TRPCProvider } from "~/utils/api";
+import { TRPCProvider } from "~/utils/trpc";
 import OfflineNotice from "./src/components/OfflineNotice";
 import AppNavigator from "./src/navigation/AppNavigator";
 import navigationTheme from "./src/navigation/navigationTheme";

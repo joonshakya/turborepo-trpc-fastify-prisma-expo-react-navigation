@@ -1,9 +1,9 @@
 import type { ExpoConfig } from "@expo/config";
 
 const defineConfig = (): ExpoConfig => ({
-  name: "t3-turbo",
-  slug: "t3-turbo",
-  scheme: "t3-turbo",
+  name: "tRPC Expo",
+  slug: "turborepo-trpc-fastify-prisma-expo-react-navigation",
+  scheme: "trpc-expo",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",

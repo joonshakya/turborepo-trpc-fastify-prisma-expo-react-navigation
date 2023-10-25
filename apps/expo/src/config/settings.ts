@@ -1,6 +1,9 @@
 import Constants from "expo-constants";
 
-const apiUrl = "https://www.example.com";
+const debuggerHost = Constants.expoConfig?.hostUri;
+const localhost = debuggerHost?.split(":")[0];
+
+const apiUrl = `http://${localhost}:3000`;
 
 export const storageDomain = "https://www.example.com";
 
@@ -8,19 +11,13 @@ const settings = {
   dev: {
     apiUrl,
   },
-  staging: {
-    apiUrl,
-  },
   prod: {
-    apiUrl,
+    apiUrl: "https://api.example.com",
   },
 };
 
 const getCurrentSettings = () => {
-  // eslint-disable-next-line no-undef
   if (__DEV__) return settings.dev;
-  if (Constants?.manifest?.releaseChannel === "staging")
-    return settings.staging;
   return settings.prod;
 };
 

@@ -7,7 +7,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
+      "outputs": [ ".expo/**", "dist/**"]
     },
     "dev": {
       "persistent": true,
@@ -37,10 +37,6 @@
     }
   },
   "globalEnv": [
-    "DATABASE_URL",
-    "DISCORD_CLIENT_ID",
-    "DISCORD_CLIENT_SECRET",
-    "NEXTAUTH_SECRET",
-    "NEXTAUTH_URL"
+    "DATABASE_URL"
   ]
 }

@@ -1,51 +1,34 @@
-# create-t3-turbo
-
-> **Note**
-> Due to high demand, this repo now uses the `app` directory with some new experimental features. If you want to use the more traditional `pages` router, [check out the repo before the update](https://github.com/t3-oss/create-t3-turbo/tree/414aff131ca124573e721f3779df3edb64989fd4).
+# turborepo-trpc-fastify-prisma-expo-react-navigation
 
 ## Installation
 
-There are two ways of initializing an app using the `create-t3-turbo` starter. You can either use this repository as a template:
-
-![use-as-template](https://github.com/t3-oss/create-t3-turbo/assets/51714798/bb6c2e5d-d8b6-416e-aeb3-b3e50e2ca994)
-
-or use Turbo's CLI to init your project (use PNPM as package manager):
+To initialize this turborepo, you can use Turbo's CLI. Use PNPM as package manager:
 
 ```bash
-npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
+npx create-turbo@latest -e https://github.com/joonshakya/turborepo-trpc-fastify-prisma-expo-react-navigation
 ```
 
 ## About
 
-Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
+This is my template to create a fullstack typescript mobile application using Expo, React Navigation, tRPC, Fastify and Prisma.
 
 It uses [Turborepo](https://turborepo.org) and contains:
 
 ```text
-.github
-  └─ workflows
-        └─ CI with pnpm cache setup
 .vscode
   └─ Recommended extensions and settings for VSCode users
 apps
+  ├─ db
+  |   └─ Typesafe db calls using Prisma
   ├─ expo
   |   ├─ Expo SDK 49
   |   ├─ React Native using React 18
   |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using Nativewind
   |   └─ Typesafe API calls using tRPC
-  └─ next.js
-      ├─ Next.js 13
-      ├─ React 18
-      ├─ Tailwind CSS
-      └─ E2E Typesafe API Server & Client
-packages
-  ├─ api
-  |   └─ tRPC v10 router definition
-  ├─ auth
-  |   └─ Authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
-  └─ db
-      └─ Typesafe db calls using Drizzle & Planetscale
+  └─ server
+      ├─ Standalone tRPC server using Fastify
+      └─ Transpilation to JS using esbuild
 tooling
   ├─ eslint
   |   └─ shared, fine-grained, eslint presets
@@ -61,9 +44,6 @@ tooling
 
 ## Quick Start
 
-> **Note**
-> The [db](./packages/db) package is preconfigured to use PlanetScale and is edge-ready with the [database.js](https://github.com/planetscale/database-js) driver. If you're using something else, make the necesary modifications to the [schema](./packages/db/schema) as well as the [client](./packages/db/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts).
-
 To get it running, follow the steps below:
 
 ### 1. Setup dependencies
@@ -76,39 +56,11 @@ pnpm i
 # There is an `.env.example` in the root directory you can use for reference
 cp .env.example .env
 
-# Push the Drizzle schema to the database
+# Push the Prisma schema to the database
 pnpm db:push
 ```
 
-### 2. Configure Expo `dev`-script
-
-#### Use iOS Simulator
-
-1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator).
-
-   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once. Run `npx expo start` in the root dir, and then enter `I` to launch Expo Go. After the manual launch, you can run `pnpm dev` in the root directory.
-
-   ```diff
-   +  "dev": "expo start --ios",
-   ```
-
-2. Run `pnpm dev` at the project root folder.
-
-#### Use Android Emulator
-
-1. Install Android Studio tools [as shown on expo docs](https://docs.expo.dev/workflow/android-studio-emulator).
-
-2. Change the `dev` script at `apps/expo/package.json` to open the Android emulator.
-
-   ```diff
-   +  "dev": "expo start --android",
-   ```
-
-3. Run `pnpm dev` at the project root folder.
-
-> **TIP:** It might be easier to run each app in separate terminal windows so you get the logs from each app separately. This is also required if you want your terminals to be interactive, e.g. to access the Expo QR code. You can run `pnpm --filter expo dev` and `pnpm --filter nextjs dev` to run each app in a separate terminal window.
-
-### 3. When it's time to add a new package
+### 2. When it's time to add a new package
 
 To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
 
@@ -116,56 +68,27 @@ The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as w
 
 ## FAQ
 
-### Can you include Solito?
-
-No. Solito will not be included in this repo. It is a great tool if you want to share code between your Next.js and Expo app. However, the main purpose of this repo is not the integration between Next.js and Expo — it's the codesplitting of your T3 App into a monorepo. The Expo app is just a bonus example of how you can utilize the monorepo with multiple apps but can just as well be any app such as Vite, Electron, etc.
-
-Integrating Solito into this repo isn't hard, and there are a few [offical templates](https://github.com/nandorojo/solito/tree/master/example-monorepos) by the creators of Solito that you can use as a reference.
-
-### What auth solution should I use instead of Next-Auth.js for Expo?
-
-I've left this kind of open for you to decide. Some options are [Clerk](https://clerk.dev), [Supabase Auth](https://supabase.com/docs/guides/auth), [Firebase Auth](https://firebase.google.com/docs/auth/) or [Auth0](https://auth0.com/docs). Note that if you're dropping the Expo app for something more "browser-like", you can still use Next-Auth.js for those. [See an example in a Plasmo Chrome Extension here](https://github.com/t3-oss/create-t3-turbo/tree/chrome/apps/chrome).
-
-The Clerk.dev team even made an [official template repository](https://github.com/clerkinc/t3-turbo-and-clerk) integrating Clerk.dev with this repo.
-
-During Launch Week 7, Supabase [announced their fork](https://supabase.com/blog/launch-week-7-community-highlights#t3-turbo-x-supabase) of this repo integrating it with their newly announced auth improvements. You can check it out [here](https://github.com/supabase-community/create-t3-turbo).
-
 ### Does this pattern leak backend code to my client applications?
 
-No, it does not. The `api` package should only be a production dependency in the Next.js application where it's served. The Expo app, and all other apps you may add in the future, should only add the `api` package as a dev dependency. This lets you have full typesafety in your client applications, while keeping your backend code safe.
+No, it does not. The `server` package should only be a production dependency in the Expo application where it's served. All other apps you may add in the future, should only add the `server` package as a dev dependency. This lets you have full typesafety in your client applications, while keeping your backend code safe.
 
 If you need to share runtime code between the client and server, such as input validation schemas, you can create a separate `shared` package for this and import it on both sides.
 
 ## Deployment
 
-### Next.js
+### tRPC Fastify Server
 
-#### Prerequisites
+To deploy the fastify server you just need to modify the `DATABASE_URL` variable in `.env` to point to your database's production URL and run the following command:
 
-> **Note**
-> Please note that the Next.js application with tRPC must be deployed in order for the Expo app to communicate with the server in a production environment.
-
-#### Deploy to Vercel
-
-Let's deploy the Next.js application to [Vercel](https://vercel.com). If you've never deployed a Turborepo app there, don't worry, the steps are quite straightforward. You can also read the [official Turborepo guide](https://vercel.com/docs/concepts/monorepos/turborepo) on deploying to Vercel.
-
-1. Create a new project on Vercel, select the `apps/nextjs` folder as the root directory and apply the following build settings:
-
-   <img width="927" alt="Vercel deployment settings" src="https://user-images.githubusercontent.com/11340449/201974887-b6403a32-5570-4ce6-b146-c486c0dbd244.png">
-
-   > The install command filters out the expo package and saves us a few seconds (and cache size) of dependency installation. The build command utilizes Turbo to build the application.
-
-2. Add your `DATABASE_URL` environment variable.
-
-3. Done! Your app should successfully deploy. Assign your domain and use that instead of `localhost` for the `url` in the Expo app so that your Expo app can communicate with your backend when you are not in development.
+```bash
+pnpm serve
+```
 
 ### Expo
 
-Deploying your Expo application works slightly differently compared to Next.js on the web. Instead of "deploying" your app online, you need to submit production builds of your app to app stores, like [Apple App Store](https://www.apple.com/app-store) and [Google Play](https://play.google.com/store/apps). You can read the full [guide to distributing your app](https://docs.expo.dev/distribution/introduction), including best practices, in the Expo docs.
+To deploy the app you need to submit production builds of your app to app stores, like [Apple App Store](https://www.apple.com/app-store) and [Google Play](https://play.google.com/store/apps). You can read the full [guide to distributing your app](https://docs.expo.dev/distribution/introduction), including best practices, in the Expo docs.
 
-1. Make sure to modify the `getBaseUrl` function to point to your backend's production URL:
-
-   <https://github.com/t3-oss/create-t3-turbo/blob/656965aff7db271e5e080242c4a3ce4dad5d25f8/apps/expo/src/utils/api.tsx#L20-L37>
+1. Make sure to modify the `apiUrl` variable in `\apps\expo\src\config\settings.ts` to point to your backend's production URL.
 
 2. Let's start by setting up [EAS Build](https://docs.expo.dev/build/introduction), which is short for Expo Application Services. The build service helps you create builds of your app, without requiring a full native development setup. The commands below are a summary of [Creating your first build](https://docs.expo.dev/build/setup).
 
@@ -227,6 +150,4 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
 ## References
 
-The stack originates from [create-t3-app](https://github.com/t3-oss/create-t3-app).
-
-A [blog post](https://jumr.dev/blog/t3-turbo) where I wrote how to migrate a T3 app into this.
+The stack originates from [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).

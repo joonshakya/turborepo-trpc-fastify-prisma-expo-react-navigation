@@ -44,3 +44,6 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# sqlite database file
+*.sqlite

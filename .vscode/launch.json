@@ -2,11 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Next.js",
+      "name": "tRPC Server",
       "type": "node-terminal",
       "request": "launch",
-      "command": "pnpm dev",
-      "cwd": "${workspaceFolder}/apps/nextjs/",
+      "command": "pnpm serve",
+      "cwd": "${workspaceFolder}/apps/server/",
       "skipFiles": ["<node_internals>/**"]
     }
   ]

@@ -7,14 +7,13 @@ import {
 } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import type { Post } from "@acme/db";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { FormikHelpers, useFormikContext } from "formik";
 import * as Yup from "yup";
 
-import type { Post } from "@acme/db";
-
 import { Form, FormField } from "~/components/forms";
-import { api } from "~/utils/api";
+import { api } from "~/utils/trpc";
 import { ListItemSeparator } from "../components/lists";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
