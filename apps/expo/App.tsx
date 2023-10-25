@@ -2,7 +2,6 @@ import { LogBox } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as Notifications from "expo-notifications";
 import { NavigationContainer } from "@react-navigation/native";
-import { NativeWindStyleSheet } from "nativewind";
 
 import { TRPCProvider } from "~/utils/trpc";
 import OfflineNotice from "./src/components/OfflineNotice";
@@ -11,10 +10,6 @@ import navigationTheme from "./src/navigation/navigationTheme";
 import { navigationRef } from "./src/navigation/routeNavigation";
 
 LogBox.ignoreLogs(["Could not find image"]);
-
-NativeWindStyleSheet.setOutput({
-  default: "native",
-});
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

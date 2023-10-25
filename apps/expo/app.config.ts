@@ -15,6 +15,10 @@ const defineConfig = (): ExpoConfig => ({
   },
   updates: {
     fallbackToCacheTimeout: 0,
+    // url: "https://u.expo.dev/34320252-70e8-4c57-96b5-f612287a8295",
+  },
+  runtimeVersion: {
+    policy: "appVersion",
   },
   assetBundlePatterns: ["**/*"],
   ios: {
@@ -30,7 +34,7 @@ const defineConfig = (): ExpoConfig => ({
   },
   extra: {
     eas: {
-      projectId: "your-project-id",
+      projectId: "34320252-70e8-4c57-96b5-f612287a8295",
     },
   },
   experiments: {

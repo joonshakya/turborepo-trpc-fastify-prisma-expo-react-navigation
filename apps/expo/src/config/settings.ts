@@ -1,15 +1,12 @@
 import Constants from "expo-constants";
 
-const debuggerHost = Constants.expoConfig?.hostUri;
-const localhost = debuggerHost?.split(":")[0];
-
-const apiUrl = `http://${localhost}:3000`;
-
 export const storageDomain = "https://www.example.com";
 
 const settings = {
   dev: {
-    apiUrl,
+    apiUrl: __DEV__
+      ? `http://${Constants.expoConfig?.hostUri?.split(":")[0]}:3000`
+      : "https://api.example.com",
   },
   prod: {
     apiUrl: "https://api.example.com",
