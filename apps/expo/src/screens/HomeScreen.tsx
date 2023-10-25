@@ -7,10 +7,11 @@ import {
 } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import type { Post } from "@acme/db";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { FormikHelpers, useFormikContext } from "formik";
 import * as Yup from "yup";
+
+import type { Post } from "@acme/db";
 
 import { Form, FormField } from "~/components/forms";
 import { api } from "~/utils/trpc";
@@ -176,8 +177,12 @@ function PostList({
           <ActivityIndicator size="large" />
         </View>
       )}
-      {error && <Text>{error.message}</Text>}
-      {posts.length === 0 && !isLoading && (
+      {error && (
+        <View className="items-center py-5">
+          <Text className="text-base">{error.message}</Text>
+        </View>
+      )}
+      {!error && posts.length === 0 && !isLoading && (
         <View className="items-center py-5">
           <Text className="text-base">No posts to show</Text>
         </View>
