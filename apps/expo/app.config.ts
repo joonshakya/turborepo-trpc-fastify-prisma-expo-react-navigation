@@ -24,6 +24,9 @@ const defineConfig = (): ExpoConfig => ({
   ios: {
     bundleIdentifier: "your.bundle.identifier",
     supportsTablet: true,
+    config: {
+      usesNonExemptEncryption: false,
+    },
   },
   android: {
     package: "your.bundle.identifier",
@@ -51,7 +54,7 @@ const defineConfig = (): ExpoConfig => ({
       },
     ],
     "./expo-plugins/with-modify-gradle.js",
-    "expo-secure-store",
+    "./expo-plugins/withAndroidVerifiedLinksWorkaround",
   ],
 });
 

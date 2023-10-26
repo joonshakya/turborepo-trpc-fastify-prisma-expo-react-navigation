@@ -12,11 +12,10 @@
     "generate": "pnpm with-env prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.4.2"
+    "@prisma/client": "^5.5.2"
   },
   "devDependencies": {
     "dotenv-cli": "^7.3.0",
-    "prisma": "^5.4.2",
-    "typescript": "^5.2.2"
+    "prisma": "^5.5.2"
   }
 }
