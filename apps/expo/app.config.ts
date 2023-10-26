@@ -51,6 +51,7 @@ const defineConfig = (): ExpoConfig => ({
       },
     ],
     "./expo-plugins/with-modify-gradle.js",
+    "expo-secure-store",
   ],
 });
 

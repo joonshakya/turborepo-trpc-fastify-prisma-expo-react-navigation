@@ -4,7 +4,8 @@
   },
   "build": {
     "base": {
-      "node": "18.16.1",
+      "node": "20.9.0",
+      "pnpm": "8.9.2",
       "ios": {
         "resourceClass": "m-medium"
       },
@@ -29,7 +30,10 @@
     },
     "production": {
       "extends": "base",
-      "channel": "production"
+      "channel": "production",
+      "android": {
+        "buildType": "apk"
+      }
     }
   },
   "submit": {
