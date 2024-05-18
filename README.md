@@ -22,8 +22,8 @@ apps
   |   └─ Typesafe db calls using Prisma
   ├─ expo
   |   ├─ Expo SDK 49
-  |   ├─ React Native using React 18
-  |   ├─ Navigation using Expo Router
+  |   ├─ React Native 0.72.6 using React 18
+  |   ├─ Navigation using React Navigation v6
   |   ├─ Tailwind using Nativewind
   |   └─ Typesafe API calls using tRPC
   └─ server
